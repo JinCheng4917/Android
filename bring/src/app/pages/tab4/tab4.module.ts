@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { Tab4PageRoutingModule } from './tab4-routing.module';
 
 import { Tab4Page } from './tab4.page';
+import {MessagePageModule} from "../message/message.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Tab4PageRoutingModule
+    Tab4PageRoutingModule,
+      MessagePageModule
   ],
   declarations: [Tab4Page]
 })
