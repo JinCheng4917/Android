@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Orders} from '../func/Orders';
-import {Random} from '../core/utils';
+import {Orders} from '../../func/Orders';
+import {Random} from '../../core/utils';
 
 @Component({
   selector: 'app-tab3',
@@ -17,7 +17,7 @@ export class Tab3Page implements OnInit {
   ngOnInit(): void {
     this.orders = new Array<Orders>();
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 30; i++) {
       const order = new Orders();
       order.goodsName = Random.nextString('name', 4);
       order.id = Random.nextNumber(2);
@@ -30,4 +30,8 @@ export class Tab3Page implements OnInit {
     return Math.floor(Math.random() * max);
   }
 
+
+    getOrderDetail(order: Orders) {
+        console.log(order.id);
+    }
 }
