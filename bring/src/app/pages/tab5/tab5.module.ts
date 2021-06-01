@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { Tab5PageRoutingModule } from './tab5-routing.module';
 
 import { Tab5Page } from './tab5.page';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    Tab5PageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        Tab5PageRoutingModule,
+        NgxEchartsModule
+    ],
   declarations: [Tab5Page]
 })
 export class Tab5PageModule {}

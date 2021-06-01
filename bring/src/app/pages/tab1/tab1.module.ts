@@ -16,7 +16,6 @@ import {OrderDetailPageModule} from "../order-detail/order-detail.module";
         FormsModule,
         ExploreContainerComponentModule,
         Tab1PageRoutingModule,
-        OrderDetailPageModule
     ],
     declarations: [Tab1Page]
 })

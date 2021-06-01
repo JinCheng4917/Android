@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {NgxEchartsModule} from "ngx-echarts";
 
 const routes: Routes = [
   {
@@ -18,13 +19,16 @@ const routes: Routes = [
     path: 'tab5',
     loadChildren: () => import('./pages/tab5/tab5.module').then( m => m.Tab5PageModule)
   },
-
-
 ];
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+        })
+    ],
+    exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
