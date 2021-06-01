@@ -6,4 +6,37 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="/assets/icon/user.png">
+    </ion-avatar>
+    <ion-label>
+      <h3>JinCheng</h3>
+      <p>18302235437</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <h6>订单详情</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <h6>关于捎物</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <h6>我的评价</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+
+  <ion-row>
+    <ion-col size="6">
+      <h6>本周统计</h6>
+      <echarts [initOpts]="initOpts" [options]="options"></echarts>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
