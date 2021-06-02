@@ -14,8 +14,8 @@ export class User {
   /** 密码 */
   password: string;
 
-  /** 角色 */
-  role: number;
+  /** 性别 */
+  sex: boolean;
 
   /** 手机号 */
   phone: string;
@@ -27,12 +27,13 @@ export class User {
 
   idnumber: string;
 
-  startTime: any;
+  /** 常用地址 **/
+  usualAddress : string;
 
   constructor(data?:
                 {
-                  id?: number; name?: string; username?: string; phone?: string; password?: string; role?: number; admin?: boolean;
-                  quota?: number; idnumber?: string; startTime?: any;
+                  id?: number; name?: string; username?: string; phone?: string; password?: string; sex?: boolean; admin?: boolean;
+                  quota?: number; idnumber?: string; usualAddress?:string;
                 }) {
     if (data) {
       if (data.id) {
@@ -55,8 +56,8 @@ export class User {
         this.password = data.password;
       }
 
-      if (data.role) {
-        this.role = data.role;
+      if (data.sex) {
+        this.sex = data.sex;
       }
 
       if (data.admin) {
@@ -69,9 +70,8 @@ export class User {
       if (data.idnumber) {
         this.idnumber = data.idnumber;
       }
-      if (data.startTime) {
-        this.startTime = data.startTime;
-      }
+      if (data.usualAddress) {}
+      this.usualAddress = data.usualAddress;
     }
 
   }
