@@ -6,5 +6,15 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">我的揽收</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item *ngFor="let order of orders" >
+    <ion-label>
+      <h3>{{order.goodsName}}</h3>
+      <p>天津-北辰 ｜ 1KG ｜ 3¥ ｜ 2小时内</p>
+    </ion-label>
+  </ion-item>
 </ion-content>
