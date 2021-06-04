@@ -25,9 +25,12 @@
     "@capacitor/keyboard": "1.0.0",
     "@ionic/angular": "^5.5.2",
     "@juggle/resize-observer": "^3.3.1",
+    "angular-sweetalert": "^1.1.2",
     "echarts": "^5.1.1",
     "ngx-echarts": "^7.0.1",
     "rxjs": "~6.6.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.16.9",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
