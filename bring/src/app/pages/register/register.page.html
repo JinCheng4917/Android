@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary" align="center">
+    <ion-icon name="chevron-back-outline" routerLink="/login"></ion-icon>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 50px;width: 100%;text-align: center;line-height: 50px">
+    <p> 用户注册</p>
+  </div>
+  <div class="list" style="width:300px;margin-left: auto;margin-right: auto;margin-bottom: 0px">
+  <ion-item>
+    <ion-label position="stacked">用户名</ion-label>
+    <ion-input type="text" placeholder='字母,数字或"_",6-30位'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">密码</ion-label>
+    <ion-input type="password" placeholder='不少于6位'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">确认密码</ion-label>
+    <ion-input type="password" placeholder='请再次输入密码'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">手机号</ion-label>
+    <ion-input type="tel" placeholder='请输入号码'></ion-input>
+  </ion-item>
+  <!--验证码功能，可删除-->
+  <ion-item>
+    <ion-label position="stacked">验证码</ion-label>
+    <ion-input type="tel" placeholder='请输入验证码'></ion-input>
+  </ion-item>
+  <ion-button color="primary" size="large" strong="true" ng-click="register()" style="border-radius: 5px" expand="block">注册</ion-button>
+  </div>
+</ion-content>
