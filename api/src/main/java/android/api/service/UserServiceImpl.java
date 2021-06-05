@@ -84,9 +84,13 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public User saveUser(User owner) {
-        User user = new User();
-        return this.userRepository.save(user);
+    public User saveUser(User user) {
+        User newUser = new User();
+        newUser.setName(user.getName());
+        newUser.setPassword(DEFAULT_PASSWORD);
+        newUser.setUsername(user.getPhone());
+        newUser.setPhone(user.getPhone());
+        return this.userRepository.save(newUser);
     }
 
     @Override
@@ -104,7 +108,7 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public Page<User> page(String name, Pageable pageable) {
+    public Page page(String name, Pageable pageable) {
         User user = new User();
         CommonService.setAllFieldsToNull(user);
 
