@@ -50,6 +50,7 @@ export class AuthService {
 
 
     login(user: User): Observable<User> {
+        console.log(user);
         // 新建Headers，并添加认证信息
         let headers = new HttpHeaders();
         // 添加 content-type
