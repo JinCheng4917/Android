@@ -1,3 +1,4 @@
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user.service";
@@ -86,4 +87,3 @@ export class LoginPage implements OnInit, OnDestroy {
     }
 
 }
-
