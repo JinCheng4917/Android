@@ -1,0 +1,123 @@
+<div class="header">
+  <div class="row m-0">
+    <div class="col-md-3 offset-md-2">
+      <p class="title" style="color: #ffffff"><b>欢迎使用本系统!</b></p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="mode === 'login'">
+  <h1 align="center" style="margin-top: 10px">
+    <ion-label color="primary">捎物</ion-label>
+  </h1>
+  <div class="list-inset" style="width:300px;margin-left: auto;margin-right: auto;margin-bottom: 0px">
+    <ion-item style="font-size: 14px;margin-right: 2px">
+      <ion-label position="floating">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="text" placeholder="手机号" id="username" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item style="font-size: 14px;margin-right: 2px">
+      <ion-label position="floating">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="password" placeholder="密码" id="password" formControlName="password"></ion-input>
+    </ion-item>
+  </div>
+  <ion-button color="primary"  expand="block" (click)="login()">登录
+  </ion-button>
+</form>
+
+
+<form>
+  <h2 style="text-align: center" *ngIf="mode === 'register'"> 欢迎使用</h2>
+  <h2 style="text-align: center" *ngIf="mode === 'register'">物流运输系统</h2>
+  <ion-button  expand="block" color="secondary" (click)="changeToDriverRegister()" *ngIf="mode === 'register'">
+    司机注册
+  </ion-button>
+  <ion-button  expand="block"  color="tertiary" (click)="changeToOwnerRegister()" *ngIf="mode === 'register'">
+    货主注册
+  </ion-button>
+</form>
+
+
+<form [formGroup]="driverRegisterForm" *ngIf="mode === 'driverRegister'">
+
+  <div class="form-group">
+    <div style="height: 50px;width: 100%;text-align: center;line-height: 50px">
+      <p> 司机注册</p>
+    </div>
+    <div class="list" style="width:300px;margin-left: auto;margin-right: auto;margin-bottom: 0px">
+      <ion-item>
+        <ion-label position="stacked">用户名</ion-label>
+        <ion-input type="text" placeholder='字母,数字或"_",6-30位' formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">手机号</ion-label>
+        <ion-input type="tel" placeholder='请输入号码' formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">车牌号</ion-label>
+        <ion-input type="text" placeholder='请输入车牌号' formControlName="licensePlateNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">密码</ion-label>
+        <ion-input type="password" placeholder='不少于6位' formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button color="primary" size="large" strong="true" style="border-radius: 5px"
+                  expand="block" (click)="driverRegister()">注册
+      </ion-button>
+    </div>
+  </div>
+</form>
+
+
+<form [formGroup]="ownerRegisterForm" (ngSubmit)="ownerRegister()" *ngIf="mode === 'ownerRegister'">
+
+
+  <div class="form-group">
+    <div style="height: 50px;width: 100%;text-align: center;line-height: 50px">
+      <p> 货主注册</p>
+    </div>
+    <div class="list" style="width:300px;margin-left: auto;margin-right: auto;margin-bottom: 0px">
+      <ion-item>
+        <ion-label position="stacked">用户名</ion-label>
+        <ion-input type="text" placeholder='字母,数字或"_",6-30位' formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">手机号</ion-label>
+        <ion-input type="tel" placeholder='请输入号码' formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">住址</ion-label>
+        <ion-input type="text" placeholder='请输入车牌号' formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">密码</ion-label>
+        <ion-input type="password" placeholder='不少于6位' formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button color="primary" size="large" strong="true" style="border-radius: 5px"
+                  expand="block" (click)="ownerRegister()">注册
+      </ion-button>
+    </div>
+  </div>
+</form>
+
+
+<section>
+  <h6 class="text-center" [ngClass]="{'text-success font-weight-bolder' : mode === 'register'}" *ngIf="mode == 'login'">
+    <ion-button (click)="changeToRegister()"
+              color="success"  expand="block">注册
+    </ion-button>
+  </h6>
+</section>
+
+<div class="footer">
+  <div class="row">
+    <div class="col text-align: center">
+      <small style="color: #ffffff ; ">©{{year}} 河北工业大学 版本号:V{{version}}</small>
+    </div>
+  </div>
+</div>

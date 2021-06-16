@@ -1,7 +1,0 @@
-{
-  "name": "bring",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

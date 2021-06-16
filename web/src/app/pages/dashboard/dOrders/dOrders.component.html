@@ -1,0 +1,31 @@
+<!--<form (ngSubmit)="onQuery()">-->
+<!--  <label>出发地：<input name="name" [formControl]="queryParams.startPlace" type="text"/></label>-->
+<!--  &nbsp;-->
+<!--  <label>目的地：<input name="no" [formControl]="queryParams.endPlace" type="text"/></label>-->
+<!--  &nbsp;-->
+<!--  <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-search"></i>查询</button>-->
+<!--  &nbsp;-->
+<!--  <button class="btn btn-sm btn-warning" (click)="clear()">-->
+<!--    <i class="fas fa-trash-alt"></i>-->
+<!--    清空-->
+<!--  </button>-->
+<!--</form>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="chevron-back-outline" routerLink="/dashboard"></ion-icon>
+    <ion-title>订单广场</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let order of orders?.content"  routerLink="/dashboard/view/{{order.id}}">
+    <ion-thumbnail slot="start">
+      <img  style="border-radius: 50%" src="assets/images/order.png">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>{{order?.goodsName}}</h3>
+      <p>{{order?.endPlace}}  ｜ {{order?.startPlace}}｜ {{order?.freight}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

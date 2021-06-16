@@ -1,0 +1,191 @@
+<!--<form [formGroup]="orderForm">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-6 offset-md-1">-->
+<!--      <div class="row mt-4">-->
+<!--        <div class="col-md-4 form-text text-right">-->
+<!--          -->
+<!--          <div class="row mt-5">-->
+<!--            <div class="col-md-8 offset-md-3">-->
+<!--              <button class="btn btn-info btn-sm"  >-->
+<!--                <i class="fas fa-truck-moving"></i>-->
+<!--                &nbsp;开始运输-->
+<!--              </button>-->
+<!--              <button class="btn btn-danger btn-sm offset-md-3" (click)="complete(order)"-->
+<!--                      [disabled]="order?.status != 2">-->
+<!--                <i class="fas fa-people-carry"></i>-->
+<!--                &nbsp;完成运输-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--</form>-->
+
+
+
+<ion-toolbar>
+  <ion-icon name="chevron-back-outline" routerLink="/dashboard/order" *ngIf="currentUser?.role == 0"></ion-icon>
+  <ion-icon name="chevron-back-outline" routerLink="/dashboard/take" *ngIf="currentUser?.role == 1"></ion-icon>
+  <ion-title>订单信息</ion-title>
+</ion-toolbar>
+
+
+<ion-content fullscreen="true">
+  <ion-list style="margin-top: 5%">
+
+    <ion-item>
+      <ion-label>
+        货物名称
+      </ion-label>
+      <ion-label>
+        {{order?.goodsName}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>运输起点
+      </ion-label>
+      <ion-label text-wrap>
+        {{order?.startPlace}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        运输目的地
+      </ion-label>
+      <ion-label text-wrap>
+        {{order?.endPlace}}
+      </ion-label>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        运费
+      </ion-label>
+      <ion-label>
+        <h4>{{order?.freight}}</h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="currentUser?.role == 1">
+    <ion-label>
+      发布人
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.owner?.user?.name}}</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="currentUser?.role == 1">
+    <ion-label>
+      联系方式
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.owner?.user.username}}</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="order?.status != 0">
+    <ion-label>
+      揽收人
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.driver?.user?.name}}</h4>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item *ngIf="order?.status != 0">
+    <ion-label>
+      车牌号
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.driver?.licensePlateNumber}}</h4>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item *ngIf="order?.status != 0">
+    <ion-label>
+      联系方式
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.driver?.user.username}}</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      货物状态
+    </ion-label>
+    <ion-label>
+      <h4 [innerHTML]="order?.status | status"></h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      发布时间
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.startTime |  date:"yyyy/MM/dd HH:mm:ss" }}</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="order?.status == 4 || order?.status == 5">
+    <ion-label>
+      完成时间
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.endTime |  date:"yyyy/MM/dd HH:mm:ss" }}</h4>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item *ngIf="order?.status == 5">
+    <ion-label>
+      交易评分
+    </ion-label>
+    <ion-label>
+      <h4>{{order?.score}}</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-list>
+
+    <ion-item *ngIf="order?.status == 4 && currentUser?.role == 0">
+      <ion-range min="0" max="5" step="1" snaps color="secondary" (ionChange)="setScore($event)">
+        <ion-icon slot="start" color="secondary" name="thumbs-down-outline"></ion-icon>
+        <ion-icon slot="end" color="secondary" name="thumbs-up-outline"></ion-icon>
+      </ion-range>
+
+    </ion-item>
+
+    <ion-button expand="block" color="secondary" *ngIf="order?.status == 4 && currentUser?.role == 0"
+                style="margin-top: 5%" (click)="putScore(order)">评分
+    </ion-button>
+
+
+  </ion-list>
+
+
+  <ion-button expand="block" color="primary" style="margin-top: 10%" (click)="college(order)"
+              *ngIf="order?.status == 0 && currentUser?.role == 1">揽收
+  </ion-button>
+  <ion-button expand="block" color="secondary" style="margin-top: 10%" (click)="transfer(order)"
+              *ngIf="order?.status == 1 && currentUser?.role == 1">开始运输
+  </ion-button>
+  <ion-button expand="block" color="success" style="margin-top: 10%" (click)="complete(order)"
+              *ngIf="order?.status == 2 && currentUser?.role == 1">完成运输
+  </ion-button>
+  <ion-button expand="block" color="success" style="margin-top: 10%" (click)="confirm(order)"
+              *ngIf="order?.status == 3 && currentUser?.role == 0">确认完成
+  </ion-button>
+
+  <ion-button expand="block" color="danger" style="margin-top: 10%" (click)="delete(order)"
+              *ngIf="order?.status == 0 && currentUser?.role == 0">删除
+  </ion-button>
+</ion-content>

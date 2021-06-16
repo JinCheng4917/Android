@@ -1,0 +1,17 @@
+<ion-toolbar>
+  <ion-icon name="chevron-back-outline" routerLink="/dashboard/personal"></ion-icon>
+  <ion-title>评价</ion-title>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let order of orders?.content" routerLink="/dashboard/eva-view/{{order.id}}">
+    <ion-thumbnail slot="start">
+      <img style="border-radius: 50%" src="assets/images/order.png">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>{{order?.goodsName}}</h3>
+      <h4 [innerHTML]="order?.status | status"></h4>
+      <p>{{order?.endPlace}}  ｜ {{order?.startPlace}}｜ {{order?.freight}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

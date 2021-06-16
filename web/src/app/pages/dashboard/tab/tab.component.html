@@ -1,0 +1,34 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>首页</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="dOrder" *ngIf="currentLoginUser?.role == 1">
+      <ion-icon name="receipt-outline"></ion-icon>
+      <ion-label>订单</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="order" *ngIf="currentLoginUser?.role == 0">
+      <ion-icon name="receipt-outline"></ion-icon>
+      <ion-label>订单</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="add" *ngIf="currentLoginUser?.role == 0">
+      <ion-icon name="duplicate-outline"></ion-icon>
+      <ion-label>发布</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="take" *ngIf="currentLoginUser?.role == 1">
+      <ion-icon name="car-outline"></ion-icon>
+      <ion-label>揽收</ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button tab="personal">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>我的</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

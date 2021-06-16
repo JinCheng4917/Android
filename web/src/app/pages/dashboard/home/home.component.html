@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="chevron-back-outline" routerLink="/dashboard"></ion-icon>
+    <ion-title>《捎物》</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+
+  <ion-slides
+    pager
+    [options]="{
+      autoplay: {disaleOnInteraction: false,
+        delay: 5000},loop: true}">
+
+    <ion-slide>
+      <img src="assets/images/order.png" alt="轮播图1">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/images/user.png" alt="轮播图1">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/images/loading-bars.svg" alt="轮播图1">
+    </ion-slide>
+  </ion-slides>
+
+  <p
+    style="text-align: center;padding-left: 20px;padding-right: 20px;padding-top: 20px; color: #3dc2ff; font-size: 18px">
+    捎物APP
+    是一款专门为解决中短距离货流中转问题的应用。切身为兼职人群打造的专业的兼职配送赚钱工具，每天有大量配送订单等您配送。您可以在发单和接单的身份间配轻松转换，作为甲方您可以轻松发布订单解决货物运输问题；作为兼职人，海量配送兼职配送订单等你来。平台长期保持兼职专职骑手招聘活动，注册即可开始进行配送兼职工作，单单结算，让您随时随地开赚,自我掌控时间
+  </p>
+
+</ion-content>
