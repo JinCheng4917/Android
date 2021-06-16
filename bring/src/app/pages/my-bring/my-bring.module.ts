@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MyBringPageRoutingModule } from './my-bring-routing.module';
 
 import { MyBringPage } from './my-bring.page';
-
+import {PipeModule} from "../../pipe/pipe.module";
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyBringPageRoutingModule
+    MyBringPageRoutingModule,
+    PipeModule
   ],
   declarations: [MyBringPage]
 })
