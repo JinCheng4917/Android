@@ -70,7 +70,7 @@ export class AddComponent implements OnInit {
     this.ordersService.save(order).subscribe(() => {
       this.submitting = false;
       this.commonService.success(() => {
-        this.router.navigateByUrl('/dashboard')
+        this.router.navigateByUrl('/tabs/order')
       }, '订单发布成功');
     }, (response: HttpErrorResponse) => {
       this.submitting = false;
@@ -81,7 +81,7 @@ export class AddComponent implements OnInit {
   submit(): void {
     if (this.ordersForm.get('freight').value > this.currentUser.quota) {
       this.commonService.error(() => {
-        this.commonService.back();
+        this.router.navigateByUrl('/tabs/personal/account');
       }, '您的余额不足，请及时充值');
 
     }else {

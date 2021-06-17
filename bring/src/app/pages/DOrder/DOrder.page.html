@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>订单广场</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let order of orders?.content"  routerLink="/tabs/view/{{order.id}}">
+    <ion-thumbnail slot="start">
+      <img  style="border-radius: 50%" src="assets/images/order.png">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>{{order?.goodsName}}</h3>
+      <p>{{order?.endPlace}}  ｜ {{order?.startPlace}}｜ {{order?.freight}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

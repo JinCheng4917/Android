@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+
+      订单发布
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="ordersForm">
+
+
+    <ion-item>
+      <h3 position="stacked">订单信息</h3>
+
+      <ion-label position="stacked">货物名称</ion-label>
+      <ion-input formControlName="goodsName"></ion-input>
+
+      <ion-label position="stacked">货物重量(Kg)</ion-label>
+      <ion-input type="number" formControlName="weight"></ion-input>
+
+      <ion-label position="stacked">取货地址</ion-label>
+      <ion-input formControlName="startPlace"></ion-input>
+
+      <ion-label position="stacked">收货地址</ion-label>
+      <ion-input formControlName="endPlace"></ion-input>
+
+      <ion-label position="stacked">订单金额(元)</ion-label>
+      <ion-input type="number" formControlName="freight"></ion-input>
+
+    </ion-item>
+
+    <ion-button style="margin-top: 10px" expand="block" (click)="submit()">提交</ion-button>
+  </form>
+</ion-content>

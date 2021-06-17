@@ -8,7 +8,7 @@
 
 <hr>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="mode === 'login'">
+<form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="mode == 'login'">
   <h1 align="center" style="margin-top: 10px">
     <ion-label color="primary">捎物</ion-label>
   </h1>
@@ -34,10 +34,10 @@
 <form>
   <h2 style="text-align: center" *ngIf="mode === 'register'"> 欢迎使用</h2>
   <h2 style="text-align: center" *ngIf="mode === 'register'">物流运输系统</h2>
-  <ion-button  expand="block" color="secondary" (click)="changeToDriverRegister()" *ngIf="mode === 'register'">
+  <ion-button  expand="block" color="secondary" (click)="changeToDriverRegister()" *ngIf="mode == 'register'">
     司机注册
   </ion-button>
-  <ion-button  expand="block"  color="tertiary" (click)="changeToOwnerRegister()" *ngIf="mode === 'register'">
+  <ion-button  expand="block"  color="tertiary" (click)="changeToOwnerRegister()" *ngIf="mode == 'register'">
     货主注册
   </ion-button>
 </form>

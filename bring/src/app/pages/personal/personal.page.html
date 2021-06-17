@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>我的</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item routerLink="./personal-detail">
+    <ion-avatar slot="start">
+      <img *ngIf="currentUser?.role === 0" src="/assets/images/owner.png">
+      <img *ngIf="currentUser?.role === 1" src="/assets/images/driver.png">
+    </ion-avatar>
+    <ion-label>
+      <h3>{{currentUser?.name}}</h3>
+      <p>{{currentUser?.username}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item routerLink="./publish" *ngIf="currentUser?.role === 0">
+    <h6>我的发布</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+
+  <ion-item routerLink="./bring" *ngIf="currentUser?.role === 1">
+    <h6>我的揽收</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item routerLink="./account">
+    <h6>个人账户</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item routerLink="./about">
+    <h6>关于捎物</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item routerLink="./evaluate" *ngIf="currentUser?.role === 0">
+    <h6>我的评价</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item routerLink="./driver-evaluate" *ngIf="currentUser?.role === 1">
+    <h6>我的评价</h6>
+    <ion-icon name="chevron-forward-circle-outline" slot="end"></ion-icon>
+  </ion-item>
+
+
+  <ion-row>
+    <ion-col size="6">
+      <h6>本周统计</h6>
+      <!--      <echarts [initOpts]="initOpts" [options]="options"></echarts>-->
+    </ion-col>
+  </ion-row>
+</ion-content>
