@@ -24,4 +24,8 @@ export class AccountPage implements OnInit {
         this.currentUser = user;
       });
   }
+
+  update() {
+    this.ngOnInit();
+  }
 }

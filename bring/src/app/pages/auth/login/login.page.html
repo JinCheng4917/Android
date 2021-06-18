@@ -30,7 +30,7 @@
   </form>
 
   <section>
-    <h6 class="text-center" [ngClass]="{'text-success font-weight-bolder' : mode === 'register'}"
+    <h6 class="text-center"
         *ngIf="mode === 'login'">
       <ion-button (click)="changeToRegister()"
                   color="success" expand="block">注册

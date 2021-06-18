@@ -68,13 +68,9 @@ export class YunzhiInterceptor implements HttpInterceptor {
      */
     return next.handle(request).pipe(
       // mergeMap = merge + map
-      mergeMap((event: any) => {
-        return of(event);
-      }),
+      mergeMap((event: any) => of(event)),
       finalize(() => this.commonService.setLoading(false)),
-      catchError((error: HttpErrorResponse) => {
-        return this.handleHttpException(error);
-      })
+      catchError((error: HttpErrorResponse) => this.handleHttpException(error))
     );
   }
 

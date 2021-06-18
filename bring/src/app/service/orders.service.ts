@@ -17,7 +17,7 @@ export class OrdersService {
     return this.httpClient.post(`${this.url}`, orders);
   }
 
-  query(params: { startPlace?: string, endPlace?: string, page?: number, size?: number }): any {
+  query(params: { startPlace?: string; endPlace?: string; page?: number; size?: number }): any {
     /* 设置默认值 */
     if (params.page === undefined) {
       params.page = 0;
@@ -40,11 +40,11 @@ export class OrdersService {
     };
     console.log(PARAM);
 
-    return this.httpClient.get<{ totalPages: number, content: Array<Orders> }>(`${this.url}/queryPlace`, {params: PARAM});
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/queryPlace`, {params: PARAM});
 
   }
 
-  driverQuery(params: { startPlace?: string, endPlace?: string, page?: number, size?: number, status?: number }): any {
+  driverQuery(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; status?: number }): any {
     console.log(params);
     /* 设置默认值 */
     if (params.page === undefined) {
@@ -65,11 +65,11 @@ export class OrdersService {
     };
     console.log(PARAM);
 
-    return this.httpClient.get<{ totalPages: number, content: Array<Orders> }>(`${this.url}/driverPlace`, {params: PARAM});
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/driverPlace`, {params: PARAM});
 
   }
 
-  ownerQuery(params: { startPlace?: string, endPlace?: string, page?: number, size?: number, reviewed?: boolean ,  status?: number }): any {
+  ownerQuery(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean ;  status?: number }): any {
     /* 设置默认值 */
     if (params.page === undefined) {
       params.page = 0;
@@ -89,7 +89,7 @@ export class OrdersService {
     };
     console.log(PARAM);
 
-    return this.httpClient.get<{ totalPages: number, content: Array<Orders> }>(`${this.url}/ownerPlace`, {params: PARAM});
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/ownerPlace`, {params: PARAM});
 
   }
 
@@ -129,6 +129,7 @@ export class OrdersService {
 
   /**
    * 根据id获取订单
+   *
    * @param id  订单id
    */
   public getById(id: number): Observable<Orders> {
@@ -144,6 +145,7 @@ export class OrdersService {
 
   /**
    * 分页方法
+   *
    * @param page 第几页
    * @param size 每页条数
    * @param userId 用户
@@ -159,6 +161,7 @@ export class OrdersService {
 
   /**
    * 分页方法
+   *
    * @param page 第几页
    * @param size 每页条数
    * @param userId 用户
@@ -174,6 +177,7 @@ export class OrdersService {
 
   /**
    * 分页方法
+   *
    * @param page 第几页
    * @param size 每页条数
    * @param userId 用户
@@ -190,6 +194,7 @@ export class OrdersService {
 
   /**
    * 分页方法
+   *
    * @param page 第几页
    * @param size 每页条数
    * @param userId 用户

@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item *ngFor="let order of orders?.content"  routerLink="/dashboard/my-view/{{order.id}}">
+  <ion-item *ngFor="let order of orders?.content"  routerLink="/tabs/personal/my-view/{{order.id}}">
     <ion-thumbnail slot="start">
       <img  style="border-radius: 50%" src="assets/images/order.png">
     </ion-thumbnail>

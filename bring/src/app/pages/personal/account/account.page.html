@@ -4,6 +4,11 @@
 </ion-toolbar>
 
 <ion-content>
+  <ion-refresher
+    pulling-text="下拉刷新..."
+    slot="fixed"
+    on-refresh="update()">
+  </ion-refresher>
   <ion-list style="margin-top: 5%">
     <ion-item>
       <ion-thumbnail slot="end" style="margin-right: 28%">

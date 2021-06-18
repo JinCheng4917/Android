@@ -14,9 +14,9 @@ import {Owner} from '../func/Owner';
   providedIn: 'root'
 })
 export class UserService {
+  public currentLoginUser$: Observable<User>;
   private currentLoginUser: User;
   private currentLoginUserSubject = new ReplaySubject<User>(1);
-  public currentLoginUser$: Observable<User>;
   private url = 'user';
 
   constructor(private commonService: CommonService,
@@ -26,24 +26,11 @@ export class UserService {
     this.getCurrentLoginUser();
   }
 
-  private getCurrentLoginUser(): void {
-    const appOnReadyItem = this.commonService.getAppOnReadyItem();
-
-    this.httpClient.get<User>(`${this.url}/me`)
-      .subscribe(user => {
-        appOnReadyItem.ready = true;
-        this.setCurrentLoginUser(user);
-      }, () => {
-        appOnReadyItem.ready = true;
-        this.setCurrentLoginUser(null);
-      });
-  }
-
   /**
    * 获取登录用户时，应该结合appOnReady。示例：
    * this.commonService.appOnReady(() => {const user = this.userService.getCurrentUser();});
    */
-  getCurrentUser(): User | null {
+  public getCurrentUser(): User | null {
     return this.currentLoginUser;
   }
 
@@ -77,6 +64,7 @@ export class UserService {
 
   /**
    * 设置当前登录用户
+   *
    * @param user 登录用户
    */
   setCurrentLoginUser(user: User): void {
@@ -86,6 +74,7 @@ export class UserService {
 
   /**
    * 校验密码是否正确
+   *
    * @param password 密码
    */
   public checkPasswordIsRight(password: string): Observable<boolean> {
@@ -98,15 +87,15 @@ export class UserService {
    * 验证原密码是否正确
    */
   public oldPasswordValidator(): AsyncValidatorFn {
-    return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-      return this.checkPasswordIsRight(ctrl.value)
+    // eslint-disable-next-line max-len
+    return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => this.checkPasswordIsRight(ctrl.value)
         .pipe(map((isRight: boolean) => (isRight ? null : {passwordError: true})),
           catchError(() => null));
-    };
   }
 
   /**
    * 验证新密码与确认密码是否相同
+   *
    * @param control 表单
    */
   public confirmPasswordValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
@@ -118,10 +107,11 @@ export class UserService {
       return newPassword !== confirmNewPassword ? {confirmPasswordError: true} : null;
     }
     return null;
-  }
+  };
 
   /**
    * 登录用户修改密码
+   *
    * @param newPassword 新密码
    * @param oldPassword 旧密码
    */
@@ -142,11 +132,25 @@ export class UserService {
 
   /**
    * 重置密码
+   *
    * @param id  用户id
    * @param student  学生
    */
   public resetPassword(id: number): Observable<void> {
     console.log(this.url + '/resetPassword/' + id);
     return this.httpClient.put<void>(this.url + '/resetPassword/' + id , id);
+  }
+
+  private getCurrentLoginUser(): void {
+    const appOnReadyItem = this.commonService.getAppOnReadyItem();
+
+    this.httpClient.get<User>(`${this.url}/me`)
+      .subscribe(user => {
+        appOnReadyItem.ready = true;
+        this.setCurrentLoginUser(user);
+      }, () => {
+        appOnReadyItem.ready = true;
+        this.setCurrentLoginUser(null);
+      });
   }
 }
