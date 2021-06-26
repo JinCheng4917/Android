@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () => import('./my-view/my-view.module').then( m => m.MyViewPageModule)
   },
   {
+    path: 'eva-view/:id',
+    loadChildren: () => import('./eva-view/eva-view.module').then( m => m.EvaViewPageModule)
+  },
+  {
     path: 'publish',
     loadChildren: () => import('./my-publish/my-publish.module').then( m => m.MyPublishPageModule)
   },

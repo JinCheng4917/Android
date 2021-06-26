@@ -12,7 +12,7 @@
       refreshingText="刷新中...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-item *ngFor="let order of orders?.content"  routerLink="/dashboard/eva-view/{{order.id}}">
+  <ion-item *ngFor="let order of orders?.content"  routerLink="../eva-view/{{order.id}}">
     <ion-thumbnail slot="start">
       <img  style="border-radius: 50%" src="assets/images/order.png">
     </ion-thumbnail>
