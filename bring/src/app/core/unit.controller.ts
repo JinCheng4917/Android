@@ -18,6 +18,7 @@ export class UnitController {
    * 存储组件、指令或管道
    * Record<类名称, Record<类的标识符token, Array<Clazz>>>;
    */
+    // eslint-disable-next-line @typescript-eslint/ban-types
   private unitRecords = {} as Record<string, Record<string, Array<object>>>;
 
   constructor() {
@@ -25,6 +26,7 @@ export class UnitController {
 
   /**
    * 添加单元（组件、指令或管道）
+   *
    * @param unit 单元
    * @param token 当多个组件的名称发生冲突时，可以指定token的值来区别各个组件
    */
@@ -41,6 +43,7 @@ export class UnitController {
 
   /**
    * 获取单元（组件、指令或管道）
+   *
    * @param unit 类型
    * @param index 索引号：当某个组件初多次实例化时，可以指定该索引号来获取想要的那个
    * @param token 组件标识
@@ -59,6 +62,7 @@ export class UnitController {
 
   /**
    * 当组件被销毁时，必须调用该方法及时地移除组件
+   *
    * @param unit 组件、指令、管道
    */
   remove(unit: object): void {

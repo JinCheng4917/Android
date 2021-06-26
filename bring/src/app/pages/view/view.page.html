@@ -150,7 +150,7 @@
       交易评分
     </ion-label>
     <ion-label>
-      <h4>{{order?.score}}</h4>
+      <h4 [innerHTML]="order?.score | star"></h4>
     </ion-label>
   </ion-item>
 

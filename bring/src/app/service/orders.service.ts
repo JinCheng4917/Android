@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Orders} from '../func/Orders';
 import {Observable} from 'rxjs';
@@ -10,9 +10,10 @@ import {Page} from '../base/page';
 export class OrdersService {
   private url = 'Orders';
 
-  constructor(private  httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  save(orders: Orders): any{
+  save(orders: Orders): any {
     console.log(orders);
     return this.httpClient.post(`${this.url}`, orders);
   }
@@ -69,7 +70,7 @@ export class OrdersService {
 
   }
 
-  ownerQuery(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean ;  status?: number }): any {
+  ownerQuery(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
     /* 设置默认值 */
     if (params.page === undefined) {
       params.page = 0;
@@ -208,4 +209,150 @@ export class OrdersService {
     return this.httpClient.get<Page<Orders>>(`${this.url}/pageByDriver`, {params});
   }
 
+  driverQuaryTake(
+    params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+  return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/driverQuaryTake`, {params: PARAM});
+
+  }
+
+  // eslint-disable-next-line max-len
+  driverQuarySuccess(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/driverQuarySuccess`, {params: PARAM});
+  }
+
+  driverQuaryEva(params:
+                   { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/driverQuaryEva`, {params: PARAM});
+  }
+
+  ownerQuaryTake(
+    params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/ownerQuaryTake`, {params: PARAM});
+
+  }
+
+  // eslint-disable-next-line max-len
+  ownerQuarySuccess(params: { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/ownerQuarySuccess`, {params: PARAM});
+
+  }
+
+  ownerQuaryEva(params:
+                  { startPlace?: string; endPlace?: string; page?: number; size?: number; reviewed?: boolean; status?: number }): any {
+    /* 设置默认值 */
+    if (params.page === undefined) {
+      params.page = 0;
+    }
+    if (params.size === undefined) {
+      params.size = 10;
+    }
+    if (params.status === undefined) {
+      params.status = 4;
+    }
+    const PARAM = {
+      status: params.status.toLocaleString(),
+      startPlace: params.startPlace ? params.startPlace : '',
+      endPlace: params.endPlace ? params.endPlace : '',
+      page: params.page.toLocaleString(),
+      size: params.size.toLocaleString()
+    };
+    console.log(PARAM);
+
+    return this.httpClient.get<{ totalPages: number; content: Array<Orders> }>(`${this.url}/ownerQuaryEva`, {params: PARAM});
+  }
 }

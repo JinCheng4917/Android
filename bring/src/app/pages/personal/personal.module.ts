@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { PersonalPageRoutingModule } from './personal-routing.module';
 
 import { PersonalPage } from './personal.page';
+import {NgxEchartsModule} from 'ngx-echarts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PersonalPageRoutingModule
+    PersonalPageRoutingModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   declarations: [PersonalPage]
 })

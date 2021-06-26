@@ -4,11 +4,15 @@
 </ion-toolbar>
 
 <ion-content>
-  <ion-refresher
-    pulling-text="下拉刷新..."
-    slot="fixed"
-    on-refresh="update()">
+
+  <ion-refresher (ionRefresh)="update($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
   </ion-refresher>
+
   <ion-list style="margin-top: 5%">
     <ion-item>
       <ion-thumbnail slot="end" style="margin-right: 28%">
@@ -60,10 +64,10 @@
         余额
       </ion-label>
       <ion-label>
-        {{currentUser?.quota}} ¥
+        {{quota}} ¥
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" style="margin-top: 5%" routerLink="./account-add">账户充值</ion-button>
+  <ion-button expand="block" style="margin-top: 5%" routerLink="../account-add">账户充值</ion-button>
 </ion-content>

@@ -155,6 +155,116 @@ public class OrdersController {
                 pageable);
     }
 
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+    @GetMapping("driverQuaryTake")
+    public Page<Orders> driverQuaryTake(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.driverQuaryTake(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+@GetMapping("driverQuarySuccess")
+    public Page<Orders> driverQuarySuccess(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.driverQuarySuccess(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+    @GetMapping("driverQuaryEva")
+    public Page<Orders> driverQuaryEva(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.driverQuaryEva(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+    @GetMapping("ownerQuaryTake")
+    public Page<Orders> ownerQuaryTake(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.ownerQuaryTake(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+    @GetMapping("ownerQuarySuccess")
+    public Page<Orders> ownerQuarySuccess(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.ownerQuarySuccess(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
+    /**
+     * 获取所有作业
+     * @param pageable 分页信息
+     * @return 所有作业
+     */
+    @GetMapping("ownerQuaryEva")
+    public Page<Orders> ownerQuaryEva(
+            @RequestParam(required = false) String startPlace,
+            @RequestParam(required = false) String endPlace,
+            @RequestParam(required = false) Long status,
+            Pageable pageable) {
+        return this.orderService.ownerQuaryEva(
+                status,
+                startPlace,
+                endPlace,
+                pageable);
+    }
+
     /**
      * 获取所有作业
      * @param pageable 分页信息

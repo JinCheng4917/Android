@@ -105,4 +105,15 @@ public interface OrderService {
      */
     Page<Orders> ownerQuaryAll(Long status, String startPlace, String endPlace, @NotNull Pageable pageable);
 
+    Page<Orders> driverQuarySuccess(Long status, String startPlace, String endPlace, Pageable pageable);
+
+    Page<Orders> driverQuaryTake(Long status, String startPlace, String endPlace, Pageable pageable);
+
+    Page<Orders> driverQuaryEva(Long status, String startPlace, String endPlace, Pageable pageable);
+
+    Page<Orders> ownerQuarySuccess(Long status, String startPlace, String endPlace, Pageable pageable);
+
+    Page<Orders> ownerQuaryTake(Long status, String startPlace, String endPlace, Pageable pageable);
+
+    Page<Orders> ownerQuaryEva(Long status, String startPlace, String endPlace, Pageable pageable);
 }

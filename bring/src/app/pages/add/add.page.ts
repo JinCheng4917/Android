@@ -8,6 +8,7 @@ import {AuthService} from '../../service/auth.service';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {GoodsType} from '../../func/GoodsType';
 import {Orders} from '../../func/Orders';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-add',
@@ -23,6 +24,7 @@ export class AddPage implements OnInit {
   constructor(private builder: FormBuilder,
               private commonService: CommonService,
               private router: Router,
+              private userService: UserService,
               private ordersService: OrdersService,
               private authService: AuthService,
               private httpClient: HttpClient) {}
@@ -40,10 +42,8 @@ export class AddPage implements OnInit {
 
 
   ngOnInit(): void {
-    this.authService.getCurrentLoginUser$()
-      .subscribe((user: User) => {
-        this.currentUser = user;
-      });
+    this.userService.getCurrentLoginUser();
+    this.currentUser = this.userService.getCurrentUser();
     this.initForm();
   }
 

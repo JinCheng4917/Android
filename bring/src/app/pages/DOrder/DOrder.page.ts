@@ -74,6 +74,7 @@ export class DOrderPage implements OnInit {
       this.params.size)
       .subscribe((response: { totalPages: number; content: Array<Orders> }) => {
         this.orders = response;
+        console.log(this.orders);
         // this.pages = this.makePagesByTotalPages(this.params.page, response.totalPages);
       });
   }

@@ -3,17 +3,20 @@ package api.platform.Service;
 import api.platform.Enyity.Orders;
 import api.platform.Enyity.Owner;
 import api.platform.Enyity.TheDriver;
+import api.platform.Enyity.User;
 import api.platform.Repository.OrderRepository;
+import org.hibernate.mapping.Any;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     private DriverService driverService;
     private OwnerService ownerService;
+    private UserService userService;
 
 
     public OrderServiceImpl(OrderRepository orderRepository,
@@ -23,6 +26,7 @@ public class OrderServiceImpl implements OrderService{
         this.orderRepository = orderRepository;
         this.driverService = driverService;
         this.ownerService = ownerService;
+        this.userService = userService;
     }
 
     @Override
@@ -125,18 +129,72 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Page driverQuaryAll(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
-        if (status == 0){
+        if (status == 0) {
             status = null;
         }
         System.out.println(status + "11111");
         TheDriver theDriver = this.driverService.getCurrentLoginDriver();
-        return this.orderRepository.driverQueryAll(status,theDriver,startPlace,endPlace,pageable);
+        return this.orderRepository.driverQueryAll(status, theDriver, startPlace, endPlace, pageable);
+    }
+
+    @Override
+    public Page driverQuaryTake(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+        System.out.println("driver");
+        System.out.println(status);
+        TheDriver theDriver = this.driverService.getCurrentLoginDriver();
+        return this.orderRepository.driverQueryAll(status, theDriver, startPlace, endPlace, pageable);
+    }
+
+    @Override
+    public Page ownerQuaryTake(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+        System.out.println("owner");
+        System.out.println(status);
+        Owner owner = this.ownerService.getCurrentLoginOwner();
+        return this.orderRepository.ownerQueryAll(status, owner, startPlace, endPlace, pageable);
+
+    }
+
+
+    @Override
+    public Page driverQuarySuccess(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+        System.out.println("driver");
+        System.out.println(status);
+        TheDriver theDriver = this.driverService.getCurrentLoginDriver();
+        return this.orderRepository.driverQueryAll(status, theDriver, startPlace, endPlace, pageable);
+    }
+
+    @Override
+    public Page ownerQuarySuccess(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+        System.out.println("owner");
+        System.out.println(status);
+        Owner owner = this.ownerService.getCurrentLoginOwner();
+        return this.orderRepository.ownerQueryAll(status, owner, startPlace, endPlace, pageable);
+
+    }
+
+
+    @Override
+    public Page driverQuaryEva(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+
+        System.out.println("driver");
+        System.out.println(status);
+        TheDriver theDriver = this.driverService.getCurrentLoginDriver();
+        return this.orderRepository.driverQueryAll(status, theDriver, startPlace, endPlace, pageable);
+    }
+
+    @Override
+    public Page ownerQuaryEva(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
+
+        System.out.println("owner");
+        System.out.println(status);
+        Owner owner = this.ownerService.getCurrentLoginOwner();
+        return this.orderRepository.ownerQueryAll(status, owner, startPlace, endPlace, pageable);
     }
 
     @Override
     public Page ownerQuaryAll(Long status, String startPlace, String endPlace, @NotNull Pageable pageable) {
-        System.out.println(status+ "2222");
+        System.out.println(status + "2222");
         Owner owner = this.ownerService.getCurrentLoginOwner();
-        return this.orderRepository.ownerQueryAll(status,owner,startPlace,endPlace,pageable);
+        return this.orderRepository.ownerQueryAll(status, owner, startPlace, endPlace, pageable);
     }
 }

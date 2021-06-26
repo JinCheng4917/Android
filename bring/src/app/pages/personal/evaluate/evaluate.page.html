@@ -4,7 +4,14 @@
   <ion-title>评价</ion-title>
 </ion-toolbar>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="orders?.content.length !== 0">
+  <ion-refresher (ionRefresh)="update($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-item *ngFor="let order of orders?.content"  routerLink="/dashboard/eva-view/{{order.id}}">
     <ion-thumbnail slot="start">
       <img  style="border-radius: 50%" src="assets/images/order.png">
@@ -15,4 +22,9 @@
       <p>{{order?.endPlace}}  ｜ {{order?.startPlace}}｜ {{order?.freight}}</p>
     </ion-label>
   </ion-item>
+</ion-content>
+
+
+<ion-content [fullscreen]="true" *ngIf="orders?.content.length === 0">
+  <h3 style="text-align: center ; margin-top: 45%">暂无评价订单</h3>
 </ion-content>

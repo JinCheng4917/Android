@@ -141,7 +141,7 @@ export class UserService {
     return this.httpClient.put<void>(this.url + '/resetPassword/' + id , id);
   }
 
-  private getCurrentLoginUser(): void {
+  public getCurrentLoginUser(): void {
     const appOnReadyItem = this.commonService.getAppOnReadyItem();
 
     this.httpClient.get<User>(`${this.url}/me`)

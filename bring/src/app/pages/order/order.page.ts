@@ -236,5 +236,13 @@ export class OrderPage implements OnInit{
       }
     }, '是否确认送达');
   }
+
+  update(refresher) {
+    setTimeout(() => {
+      console.log('下拉刷新2');
+      this.ngOnInit();
+      refresher.detail.complete();
+    }, 2000);
+  }
 }
 

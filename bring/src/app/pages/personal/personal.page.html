@@ -5,7 +5,13 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher (ionRefresh)="update($event)" slot="fixed">
+    <ion-refresher-content
+      pullingText="下拉刷新"
+      refreshingSpinner="circles"
+      refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-item routerLink="./personal-detail">
     <ion-avatar slot="start">
       <img *ngIf="currentUser?.role === 0" src="/assets/images/owner.png">
@@ -51,8 +57,8 @@
 
   <ion-row>
     <ion-col size="6">
-      <h6>本周统计</h6>
-      <!--      <echarts [initOpts]="initOpts" [options]="options"></echarts>-->
+      <h6>订单统计</h6>
+            <div echarts style="width: 350px; height: 300px" [options]="chartOption" [loading]="isLoading" theme="macarons" ></div>
     </ion-col>
   </ion-row>
 </ion-content>

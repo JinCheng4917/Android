@@ -3,6 +3,7 @@ package api.platform.Repository;
 import api.platform.Enyity.Orders;
 import api.platform.Enyity.Owner;
 import api.platform.Enyity.TheDriver;
+import api.platform.Enyity.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,6 +48,4 @@ public interface OrderRepository extends PagingAndSortingRepository<Orders, Long
                 .and(OrdersSpecs.isStatus(status)).and(OrdersSpecs.startWithOwner(owner));
         return this.findAll(specification, pageable);
     }
-
-
 }

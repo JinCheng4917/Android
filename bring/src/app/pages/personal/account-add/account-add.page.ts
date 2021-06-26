@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import { CommonService } from 'src/app/service/common.service';
-import {User} from '../../../../func/User';
+import {CommonService} from 'src/app/service/common.service';
+import {User} from '../../../func/User';
 import {Router} from '@angular/router';
-import {UserService} from '../../../../service/user.service';
-import {AuthService} from '../../../../service/auth.service';
+import {UserService} from '../../../service/user.service';
+import {AuthService} from '../../../service/auth.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
@@ -70,7 +70,9 @@ export class AccountAddPage implements OnInit {
       this.submitting = false;
       this.commonService.success(() => {
       }, '账户充值成功');
-      this.router.navigateByUrl('/tabs/personal/account');
+      this.router.navigateByUrl('', {skipLocationChange: false}).then(() => {
+        this.router.navigate([ '/tabs/personal/account', ]);
+      });
     }, (response: HttpErrorResponse) => {
       this.submitting = false;
       this.commonService.httpError(response);

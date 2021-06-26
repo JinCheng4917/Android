@@ -217,6 +217,14 @@ export class TakePage implements OnInit {
       });
     });
   }
+
+  update(refresher) {
+    setTimeout(() => {
+      console.log('下拉刷新2');
+      this.ngOnInit();
+      refresher.detail.complete();
+    }, 2000);
+  }
 }
 
 

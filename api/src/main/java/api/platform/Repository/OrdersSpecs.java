@@ -3,6 +3,7 @@ package api.platform.Repository;
 import api.platform.Enyity.Orders;
 import api.platform.Enyity.Owner;
 import api.platform.Enyity.TheDriver;
+import api.platform.Enyity.User;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Expression;
